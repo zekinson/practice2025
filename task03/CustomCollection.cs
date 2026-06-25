@@ -10,7 +10,7 @@ namespace task03
         private readonly List<T> _items = new();
 
         public void Add(T item) => _items.Add(item);
-        public void Remove(T item) => _items.Remove(item);
+        public bool Remove(T item) => _items.Remove(item);
         public IEnumerator<T> GetEnumerator() => _items.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
@@ -22,11 +22,11 @@ namespace task03
             }
         }
 
-        static IEnumerable GenerateSequence(int start, int count)
+        public static IEnumerable<int> GenerateSequence(int start, int count)
         {
-            for (int i = start; i <= count; i++)
+            for (int i = 0; i < count; i++)
             {
-                yield return i;
+                yield return start + i;
             }
         }
 
