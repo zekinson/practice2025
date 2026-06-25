@@ -21,7 +21,7 @@ namespace task02
         public IEnumerable<Student> GetStudentsWithMinAverageGrade(double minAverageGrade)
         {
             return from student in _students
-                    where student.Grades.Averege() >= minAverageGrade
+                    where student.Grades.Average() >= minAverageGrade
                     select student;
         }
 
@@ -36,8 +36,7 @@ namespace task02
         // 4. Группировка по факультету
         public ILookup<string, Student> GroupStudentsByFaculty()
         {
-            return (from s in _students
-                     group s by s.Faculty).ToLookup(g => g.Key, g => g);
+            return _students.ToLookup(s => s.Faculty);
         }
 
         // 5. Находит факультет с максимальным средним баллом
