@@ -31,12 +31,14 @@ public class StringExtensionsTests
         Assert.True(input.IsPalindrome());
     }
 
+    [Fact]
     public void IsPalindrome_OneLetter_ReturnsTrue()
     {
         string input = "A";
         Assert.True(input.IsPalindrome());
     }
 
+    [Fact]
     public void IsPalindrome_OneWord_ReturnsTrue()
     {
         string input = "Дед";
