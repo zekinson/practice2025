@@ -43,8 +43,8 @@ public class SpaceshipTests
             
         cruiser.MoveForward();
             
-        Assert.Equal(50.0, cruiser.X);
-        Assert.Equal(0.0, cruiser.Y);
+        Assert.Equal(50.0, cruiser.X, 10);
+        Assert.Equal(0.0, cruiser.Y, 10);
     }
 
     [Fact]
@@ -55,8 +55,8 @@ public class SpaceshipTests
         cruiser.Rotate(90);
         cruiser.MoveForward();
             
-        Assert.Equal(0.0, cruiser.X);
-        Assert.Equal(50.0, cruiser.Y);
+        Assert.Equal(0.0, cruiser.X, 10);
+        Assert.Equal(50.0, cruiser.Y, 10);
     }
         
     [Fact]
@@ -67,8 +67,8 @@ public class SpaceshipTests
         cruiser.Rotate(360);
         cruiser.MoveForward();
         
-        Assert.Equal(50.0, cruiser.X);
-        Assert.Equal(0.0, cruiser.Y);
+        Assert.Equal(50.0, cruiser.X, 10);
+        Assert.Equal(0.0, cruiser.Y, 10);
     }
 
     [Fact]
@@ -79,8 +79,8 @@ public class SpaceshipTests
         cruiser.Rotate(450);
         cruiser.MoveForward();
         
-        Assert.Equal(0.0, cruiser.X);
-        Assert.Equal(50.0, cruiser.Y);
+        Assert.Equal(0.0, cruiser.X, 10);
+        Assert.Equal(50.0, cruiser.Y, 10);
     }
 
     [Fact]
@@ -91,7 +91,7 @@ public class SpaceshipTests
         cruiser.Rotate(45);
         cruiser.MoveForward();
         
-        Assert.Equal(cruiser.X, cruiser.Y);
+        Assert.Equal(cruiser.X, cruiser.Y, 10);
     }
 
     // Тесты поворота
@@ -190,8 +190,8 @@ public class SpaceshipTests
             
         fighter.MoveForward();
             
-        Assert.Equal(100.0, fighter.X);
-        Assert.Equal(0.0, fighter.Y);
+        Assert.Equal(100.0, fighter.X, 10);
+        Assert.Equal(0.0, fighter.Y, 10);
     }
 
     [Fact]
@@ -202,8 +202,8 @@ public class SpaceshipTests
         fighter.Rotate(90);
         fighter.MoveForward();
             
-        Assert.Equal(0.0, fighter.X);
-        Assert.Equal(100.0, fighter.Y);
+        Assert.Equal(0.0, fighter.X, 10);
+        Assert.Equal(100.0, fighter.Y, 10);
     }
         
     [Fact]
@@ -214,8 +214,8 @@ public class SpaceshipTests
         fighter.Rotate(360);
         fighter.MoveForward();
         
-        Assert.Equal(100.0, fighter.X);
-        Assert.Equal(0.0, fighter.Y);
+        Assert.Equal(100.0, fighter.X, 10);
+        Assert.Equal(0.0, fighter.Y, 10);
     }
 
     [Fact]
@@ -226,8 +226,8 @@ public class SpaceshipTests
         fighter.Rotate(450);
         fighter.MoveForward();
         
-        Assert.Equal(0.0, fighter.X);
-        Assert.Equal(100.0, fighter.Y);
+        Assert.Equal(0.0, fighter.X, 10);
+        Assert.Equal(100.0, fighter.Y, 10);
     }
 
     [Fact]
@@ -238,7 +238,7 @@ public class SpaceshipTests
         fighter.Rotate(45);
         fighter.MoveForward();
         
-        Assert.Equal(fighter.X, fighter.Y);
+        Assert.Equal(fighter.X, fighter.Y, 10);
     }
 
     // Тесты поворота
