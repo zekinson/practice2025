@@ -4,8 +4,8 @@ namespace task04
 {
     public class Cruiser : ISpaceship
     {
-        public int Speed = 50;
-        public int FirePower = 100;
+        public int Speed { get; } = 50;
+        public int FirePower { get; } = 100;
 
         public int Angle;
         public double X;
