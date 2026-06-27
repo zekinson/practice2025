@@ -16,7 +16,8 @@ namespace task05
         public IEnumerable<string> GetPublicMethods()
         {
             return _type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
-                .Where(m => !m.IsSpecialName).Select(m => m.Name).Distinct();
+                .Where(m => !m.IsSpecialName && m.DeclaringType != typeof(object))
+                .Select(m => m.Name).Distinct();
         }
 
         public IEnumerable<string> GetMethodParams(string methodName)
@@ -30,14 +31,18 @@ namespace task05
             if (method == null)
                 return Enumerable.Empty<string>();
 
-            return method.GetParameters().Select(p => $"{p.ParameterType.Name} {p.Name}");
+            var parameters = method.GetParameters().Select(p => $"{p.ParameterType.Name} {p.Name}").ToList();
+            parameters.Add($"Return: {method.ReturnType.Name}");
+
+            return parameters;
         }
 
         public IEnumerable<string> GetAllFields()
         {
             return _type
                 .GetFields(BindingFlags.Public | BindingFlags.NonPublic | 
-                           BindingFlags.Instance | BindingFlags.Static)
+                           BindingFlags.Instance)
+                .Where(f => !f.Name.Contains("<") && !f.Name.Contains(">"))
                 .Select(f => f.Name);
         }
 
