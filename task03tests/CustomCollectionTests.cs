@@ -63,4 +63,30 @@ public class IteratorTests
         var result = collection.FilterAndSort(x => x > 1, x => x).ToList();
         Assert.Equal(new[] { 2, 3 }, result);
     }
+
+    [Fact]
+    public void GenerateSequence_NegativeCount_ThrowsException()
+    {
+        Assert.Throws<ArgumentException>(() => CustomCollection<int>.GenerateSequence(5, -3).ToList());
+    }
+
+    [Fact]
+    public void FilterAndSort_NullPredicate_ThrowsException()
+    {
+        var collection = new CustomCollection<int>();
+        collection.Add(1);
+        collection.Add(2);
+
+        Assert.Throws<ArgumentNullException>(() => collection.FilterAndSort(null, x => x).ToList());
+    }
+
+    [Fact]
+    public void FilterAndSort_NullKeySelector_ThrowsException()
+    {
+        var collection = new CustomCollection<int>();
+        collection.Add(1);
+        collection.Add(2);
+
+        Assert.Throws<ArgumentNullException>(() => collection.FilterAndSort(x => true, null).ToList());
+    }
 }
