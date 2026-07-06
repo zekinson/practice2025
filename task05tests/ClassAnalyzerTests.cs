@@ -135,4 +135,10 @@ public class ClassAnalyzerTests
         var analyzer = new ClassAnalyzer(typeof(TestClass));
         Assert.False(analyzer.HasAttribute<SerializableAttribute>());
     }
+
+    [Fact]
+    public void Constructor_WithNullType_ThrowsException()
+    {
+        Assert.Throws<ArgumentNullException>(() => new ClassAnalyzer(null));
+    }
 }
