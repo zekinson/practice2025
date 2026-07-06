@@ -24,6 +24,9 @@ namespace task03
 
         public static IEnumerable<int> GenerateSequence(int start, int count)
         {
+            if (count < 0)
+                throw new ArgumentException("Количество не может быть отрицательным", nameof(count));
+
             for (int i = 0; i < count; i++)
             {
                 yield return start + i;
@@ -32,6 +35,11 @@ namespace task03
 
         public IEnumerable<T> FilterAndSort(Func<T, bool> predicate, Func<T, IComparable> keySelector)
         {
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+
             return _items.Where(predicate).OrderBy(keySelector);
         }
     }
