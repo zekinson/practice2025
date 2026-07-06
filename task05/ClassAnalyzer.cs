@@ -10,6 +10,11 @@ namespace task05
 
         public ClassAnalyzer(Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             _type = type;
         }
 
@@ -29,7 +34,9 @@ namespace task05
             var method = _type.GetMethod(methodName);
 
             if (method == null)
+            {
                 return Enumerable.Empty<string>();
+            }
 
             var parameters = method.GetParameters().Select(p => $"{p.ParameterType.Name} {p.Name}").ToList();
             parameters.Add($"Return: {method.ReturnType.Name}");
