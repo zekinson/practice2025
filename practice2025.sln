@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task13", "task13\task13.csproj", "{FA7FCA0F-8135-4B78-9F5D-28829B81C611}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task13tests", "task13tests\task13tests.csproj", "{731AD044-9332-4564-A47E-BD658A12C08F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonConsoleApp", "JsonConsoleApp\JsonConsoleApp.csproj", "{598A0E45-D3F2-4615-8F64-AF836FDEB675}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA7FCA0F-8135-4B78-9F5D-28829B81C611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7FCA0F-8135-4B78-9F5D-28829B81C611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA7FCA0F-8135-4B78-9F5D-28829B81C611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7FCA0F-8135-4B78-9F5D-28829B81C611}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731AD044-9332-4564-A47E-BD658A12C08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731AD044-9332-4564-A47E-BD658A12C08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731AD044-9332-4564-A47E-BD658A12C08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731AD044-9332-4564-A47E-BD658A12C08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598A0E45-D3F2-4615-8F64-AF836FDEB675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598A0E45-D3F2-4615-8F64-AF836FDEB675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598A0E45-D3F2-4615-8F64-AF836FDEB675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598A0E45-D3F2-4615-8F64-AF836FDEB675}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
