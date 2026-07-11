@@ -27,7 +27,17 @@ namespace MetadataViewer
                 var assembly = Assembly.LoadFrom(dllPath);
                 Console.WriteLine($"Библиотека: {assembly.GetName().Name}\n");
 
-                var types = assembly.GetTypes()
+                Type[] types_;
+                try
+                {
+                    types_ = assembly.GetTypes();
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    types_ = ex.Types?.Where(t => t != null).ToArray() ?? Array.Empty<Type>();
+                }
+
+                var types = types_
                     .Where(t => t.IsClass && !t.IsAbstract)
                     .Where(t => t.Namespace != null && !t.Namespace.StartsWith("System"))
                     .Where(t => !t.Name.Contains("<>"))
