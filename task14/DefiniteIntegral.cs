@@ -74,6 +74,33 @@ namespace task14
             return sum;
         }
 
+        public static double SolveSingleThread(
+            double a,
+            double b,
+            Func<double, double> function,
+            double step)
+        {
+            if (step <= 0)
+                throw new ArgumentException("Шаг должен быть > 0", nameof(step));
+
+            if (a >= b)
+                throw new ArgumentException("Левая граница должна быть меньше правой");
+
+            int totalSteps = (int)Math.Ceiling((b - a) / step);
+            double actualStep = (b - a) / totalSteps;
+
+            double sum = 0.0;
+
+            for (int i = 0; i < totalSteps; i++)
+            {
+                double x1 = a + i * actualStep;
+                double x2 = a + (i + 1) * actualStep;
+                sum += (function(x1) + function(x2)) * actualStep / 2.0;
+            }
+
+            return sum;
+        }
+
         private static void InterlockedAdd(ref double location, double value)
         {
             double newValue, currentValue;
