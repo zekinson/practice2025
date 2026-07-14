@@ -8,7 +8,7 @@ namespace PluginC
     {
         public void Execute()
         {
-            Console.WriteLine("PluginC: Выполнение... (зависит от PluginA и PluginB)");
+            Console.WriteLine("PluginC");
         }
     }
 }
