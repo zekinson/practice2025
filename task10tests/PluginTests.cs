@@ -52,18 +52,21 @@ namespace task10tests
         [Fact]
         public void PluginLoader_ExecutesAllPlugins()
         {
-            // Arrange
             var loader = new PluginLoader.PluginLoader();
             var dir = GetPluginsDirectory();
 
-            // Act
             var plugins = loader.LoadPlugins(dir);
 
-            // Assert
             foreach (var plugin in plugins)
             {
-                var exception = Record.Exception(() => plugin.Execute());
-                Assert.Null(exception);
+                try
+                {
+                    plugin.Execute();
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail($"Ошибка при выполнении {plugin.GetType().Name}: {ex.Message}");
+                }
             }
         }
     }
