@@ -91,7 +91,6 @@ namespace task18
             }
 
             _isRunning = false;
-            Console.WriteLine("Поток остановлен");
         }
     }
 }
