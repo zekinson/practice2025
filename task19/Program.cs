@@ -54,18 +54,14 @@ namespace task19
 
                 if (allHaveThreeCalls)
                 {
-                    testCmd5.Cancel();
-
-                    Console.WriteLine();
-                    Console.WriteLine("HardStop (команда 5 прервана)");
-                    _log.AppendLine();
-                    _log.AppendLine("HardStop (команда 5 прервана)");
+                    Console.WriteLine("HardStop");
+                    _log.AppendLine("HardStop\n");
                     server.Stop();
                     server.Join();
                     break;
                 }
 
-                Thread.Sleep(10);
+                Thread.Sleep(1);
             }
 
             Console.WriteLine();
@@ -75,7 +71,8 @@ namespace task19
 
             foreach (var c in commands)
             {
-                string status = c.IsCompleted ? "завершён" : "прерван (HardStop)";
+                bool isFinished = c.IsCompleted || c.Counter >= c.MaxCalls;
+                string status = isFinished ? "завершён" : "прерван";
                 Console.WriteLine($"Поток {c.Id}: {c.Counter} вызовов ({status})");
                 _log.AppendLine($"Поток {c.Id}: {c.Counter} вызовов ({status})");
             }
@@ -121,17 +118,17 @@ namespace task19
 
         public void Execute()
         {
-            _command.Execute();
-
             if (_testCommand != null)
             {
                 Program.AppendLog($"Поток {_testCommand.Id} -> {_testCommand.Counter}\n");
+            }
 
-                if (_testCommand.IsCompleted)
-                {
-                    Console.WriteLine($"Поток {_testCommand.Id} завершён");
-                    Program.AppendLog($"Поток {_testCommand.Id} завершён\n");
-                }
+            _command.Execute();
+
+            if (_testCommand != null && _testCommand.IsCompleted)
+            {
+                Console.WriteLine($"Поток {_testCommand.Id} завершён");
+                Program.AppendLog($"Поток {_testCommand.Id} завершён\n");
             }
         }
     }
