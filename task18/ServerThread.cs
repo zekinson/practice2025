@@ -9,6 +9,7 @@ namespace task18
         private readonly IScheduler _scheduler;
         private readonly Thread _thread;
         private volatile bool _isRunning;
+        private volatile bool _hardStopRequested;
         private readonly int _idleTimeout = 100;
 
         public bool IsRunning => _isRunning;
@@ -17,6 +18,7 @@ namespace task18
         {
             _scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
             _isRunning = false;
+            _hardStopRequested = false;
 
             _thread = new Thread(ProcessCommands);
             _thread.IsBackground = true;
@@ -28,6 +30,7 @@ namespace task18
                 return;
 
             _isRunning = true;
+            _hardStopRequested = false;
             _thread.Start();
         }
 
@@ -45,6 +48,7 @@ namespace task18
 
         public void Stop()
         {
+            _hardStopRequested = true;
             _isRunning = false;
             _thread.Interrupt();
         }
@@ -56,7 +60,7 @@ namespace task18
 
         private void ProcessCommands()
         {
-            while (_isRunning)
+            while (_isRunning && !_hardStopRequested)
             {
                 try
                 {
@@ -65,6 +69,9 @@ namespace task18
                     if (command != null)
                     {
                         command.Execute();
+
+                        if (_hardStopRequested)
+                            break;
                     }
                     else
                     {
@@ -73,6 +80,8 @@ namespace task18
                 }
                 catch (ThreadInterruptedException)
                 {
+                    if (_hardStopRequested)
+                        break;
                     continue;
                 }
                 catch (Exception ex)
@@ -80,6 +89,8 @@ namespace task18
                     Console.WriteLine($"Ошибка: {ex.Message}");
                 }
             }
+
+            _isRunning = false;
         }
     }
 }
