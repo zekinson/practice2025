@@ -31,13 +31,12 @@ namespace task19
 
             _counter++;
             Console.WriteLine($"Поток {_id} вызов {_counter}");
-
+            
             Thread.Sleep(10);
 
             if (_counter >= _maxCalls)
             {
                 _isCompleted = true;
-                Console.WriteLine($"Поток {_id} завершён!");
             }
         }
     }
